@@ -1,0 +1,27 @@
+#!/bin/sh
+# Le switch case ci-dessous permet de savoir si le système souhaite 
+# lancer ou arrêter le script (on le lance au démarrage et l'arrête à la 
+# fermeture du système)
+case "$1" in
+    start)
+        # Placez ici les commandes à exécuter uniquement au lancement du 
+        # script
+		echo "Repeated Start Script started\n"
+		sudo chmod 666 /sys/module/i2c_bcm2708/parameters/combined
+		sudo echo -n 1 > /sys/module/i2c_bcm2708/parameters/combined
+		#démarrer le script MyDSPi
+		sudo /usr/local/bin/MyDSPi
+    ;;
+    stop)
+        # Placez ici les commandes à exécuter uniquement à l'arrêt du 
+        # script
+        
+    ;;
+    *)
+        # On indique ici comment utiliser le script, c'est dans le cas 
+        # où le script est appelé sans argument ou avec un argument 
+        # invalide
+        
+        exit 1
+    ;; esac
+exit 0
