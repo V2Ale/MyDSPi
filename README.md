@@ -91,7 +91,7 @@ https://github.com/V2Ale/MyDSPi/tree/master/Software/Install</span>)<br>
 To edit the configuration file, use the command :<br>
 <pre>&nbsp;sudo nano /etc/default/MyDSPi.conf</pre>
 For more details about configuration file rules, please refer to <span
- style="color: red;">XXX</span><br>
+ style="color: red;">https://github.com/V2Ale/MyDSPi/tree/master/Software/Install/config</span><br>
 <br>
 <h3>Roadmap</h3>
 Support 2 input / 2.1 output<br>
