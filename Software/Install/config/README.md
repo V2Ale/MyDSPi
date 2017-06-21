@@ -3,7 +3,7 @@
 <head>
   <meta content="text/html; charset=ISO-8859-1"
  http-equiv="content-type">
- 
+  <title></title>
 </head>
 <body>
 <h3>Configuration</h3>
@@ -39,7 +39,38 @@ The available sections are :<br>
   <li>[crossover]</li>
 </ul>
 </div>
-<br>
+<h4 style="margin-left: 40px;">config section</h4>
+<div style="margin-left: 80px;">The input section is used
+to configure the input type of the DSP. It has one parameter :<br>
+<pre><pre>audioinput<br></pre></pre>
+The values can be <br>
+<div style="margin-left: 40px;">
+<pre><span style="font-weight: bold;">digital</span><br></pre>
+<div style="margin-left: 40px;">To set DSP input I2S signal</div>
+</div>
+<pre style="margin-left: 40px;"><span
+ style="font-weight: bold;">analog</span><br></pre>
+<div style="margin-left: 80px;">To set DSP input as analog
+</div>
+</div>
+<div style="margin-left: 40px;">
+<div style="margin-left: 80px;">
+<pre><span style="font-weight: bold;">tone</span><br></pre>
+<div style="margin-left: 40px;">This &nbsp;force the
+input to be a twin sine tone signal (500 Hz
+and 5000 Hz)<br>
+</div>
+</div>
+</div>
+<div style="margin-left: 80px;"></div>
+<h4 style="margin-left: 40px;"><br>
+Input sections</h4>
+<h4 style="margin-left: 40px;"><br>
+Output sections</h4>
+<h4 style="margin-left: 40px;"><br>
+EQ sections</h4>
+<h4 style="margin-left: 40px;"><br>
+Crossover</h4>
 <br>
 <h4>Ranges</h4>
 <br>
