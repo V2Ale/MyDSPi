@@ -86,7 +86,7 @@ The following step describes only the installation major steps. <br>
 - Setup I2S soundcard (following &nbsp;<a
  href="https://www.hifiberry.com/build/documentation/hifiberry-software-configuration/">https://www.hifiberry.com/build/documentation/hifiberry-software-configuration/</a>)<br>
 - Run installation script (see<span style="color: red;">
-XXX</span>)<br>
+https://github.com/V2Ale/MyDSPi/tree/master/Software/Install</span>)<br>
 <h3>Configuration</h3>
 To edit the configuration file, use the command :<br>
 <pre>&nbsp;sudo nano /etc/default/MyDSPi.conf</pre>
