@@ -132,7 +132,7 @@ take any value between 0.1 to 10.0 <br>
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp; Control the S parameter of LSF and HSF
 filters. It can take any value between 0.0 and 3.0<br>
-<pre>      </pre>
+
 </div>
 <h4 style="margin-left: 40px;"><br>
 Crossover</h4>
