@@ -119,7 +119,7 @@ peak filter (parametric)<br>
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp; Set the corner frequency of the filter.
 It can range between 20 to 20000<br>
-<pre>&nbsp;     B</pre>
+<pre>&nbsp; B</pre>
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp; Control boost factor of &nbsp;peak, LSF and
 HSF filters. It can take any value between -80.0 to 20.0 <br>
@@ -132,7 +132,6 @@ take any value between 0.1 to 10.0 <br>
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp; Control the S parameter of LSF and HSF
 filters. It can take any value between 0.0 and 3.0<br>
-
 </div>
 <h4 style="margin-left: 40px;"><br>
 Crossover</h4>
@@ -155,5 +154,11 @@ greater than the FLow value<br>
 <h4>Block diagram<br>
 </h4>
 <br>
+The audio block are linked together as follow to build the audio chain
+: <br>
+<br>
+audioinput -&gt; input mute -&gt; input volume -&gt; EQ
+-&gt; crossover -&gt; delay -&gt; phase -&gt; mute
+-&gt; volume
 </body>
 </html>
