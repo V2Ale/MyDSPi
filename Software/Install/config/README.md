@@ -3,7 +3,6 @@
 <head>
   <meta content="text/html; charset=ISO-8859-1"
  http-equiv="content-type">
-  <title></title>
 </head>
 <body>
 <h3>Configuration</h3>
@@ -45,21 +44,16 @@ has one parameter :<br>
 <br>
 <div style="margin-left: 40px;">
 <pre>audioinput</pre>
+It can take the values : <br>
 <br>
-The values can be<br>
+<div style="margin-left: 40px;">digital - to set DSP input
+I2S signal<br>
 <br>
-<pre>digital</pre>
+analog - to set DSP input as analog<br>
 <br>
-To set DSP input I2S signal<br>
-<br>
-<pre>analog</pre>
-<br>
-To set DSP input as analog<br>
-<br>
-<pre>tone</pre>
-<br>
-This&nbsp; force the input to be a twin sine tone signal (500 Hz
-and 5000 Hz)<br>
+tone - this&nbsp; force the input to be a twin sine tone signal
+(500 Hz and 5000 Hz)<br>
+</div>
 </div>
 <h4 style="margin-left: 40px;">
 Input sections</h4>
