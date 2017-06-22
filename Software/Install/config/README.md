@@ -40,36 +40,31 @@ The available sections are :<br>
 </ul>
 </div>
 <h4 style="margin-left: 40px;">config section</h4>
-<div style="margin-left: 80px;">The input section is used
-to configure the input type of the DSP. It has one parameter :<br>
-<pre><pre>audioinput<br></pre></pre>
-The values can be <br>
-</div>
+The input section is used to configure the input type of the DSP. It
+has one parameter :<br>
+<br>
 <div style="margin-left: 40px;">
-<div style="margin-left: 40px;">
-<pre><span style="font-weight: bold;">digital</span><br></pre>
-To set DSP input I2S signal
-</div>
-<pre style="margin-left: 40px;"><span
- style="font-weight: bold;">analog</span><br></pre>
-<div style="margin-left: 40px;">To set DSP input as analog
-</div>
-</div>
-<div style="margin-left: 40px;">
-<div style="margin-left: 40px;">
-<pre><span style="font-weight: bold;">tone</span><br></pre>
-This &nbsp;force the input to be a twin sine tone signal (500 Hz
+<pre>audioinput</pre>
+<br>
+The values can be<br>
+<br>
+<pre>digital</pre>
+<br>
+To set DSP input I2S signal<br>
+<br>
+<pre>analog</pre>
+<br>
+To set DSP input as analog<br>
+<br>
+<pre>tone</pre>
+<br>
+This&nbsp; force the input to be a twin sine tone signal (500 Hz
 and 5000 Hz)<br>
-</div>
-<div style="margin-left: 80px;"></div>
-</div>
-<div style="margin-left: 80px;"><br>
 </div>
 <h4 style="margin-left: 40px;">
 Input sections</h4>
-<h4 style="margin-left: 80px;"><span
- style="font-weight: normal;">There is one input section per
-input channel with 2 parameters in each section.</span></h4>
+<span style="font-weight: normal;">There is one input
+section per input channel with 2 parameters in each section.</span>
 <div style="margin-left: 40px;">
 <pre>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;mute</pre>
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
@@ -82,9 +77,8 @@ otherwise <br>
 It can take any value between -80 and 0</div>
 <br>
 <h4 style="margin-left: 40px;">Output sections</h4>
-<h4 style="margin-left: 80px;"><span
- style="font-weight: normal;">There is one output section per
-output channel with 4 parameters in each section.</span></h4>
+<span style="font-weight: normal;">There is one output
+section per output channel with 4 parameters in each section.</span>
 <div style="margin-left: 40px;">
 <pre>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;mute</pre>
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
@@ -107,9 +101,8 @@ takes the value 1 to reverse polarity, 0 otherwise</div>
 <h4 style="margin-left: 40px;"></h4>
 <h4 style="margin-left: 40px;"><br>
 EQ sections</h4>
-<h4 style="margin-left: 80px;"><span
- style="font-weight: normal;">There are 14 EQ filters
-avaialble which can be configured independently.&nbsp;</span></h4>
+<span style="font-weight: normal;">There are 14 EQ filters
+avaialble which can be configured independently.&nbsp;</span>
 <div style="margin-left: 40px;">
 <pre>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;type</pre>
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
