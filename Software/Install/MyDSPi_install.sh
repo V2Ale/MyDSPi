@@ -16,7 +16,3 @@ update-rc.d MyDSPi_boot defaults;
 #Copy the default file
 
 install -D -g root -o root $PWD/config/MyDSPi.conf /etc/default/MyDSPi.conf
-
-#uninstall
-#rm /etc/init.d/MyDSPi_start.sh
-#update-rc.d -f MyDSPi_start.sh remove
