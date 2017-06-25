@@ -10,7 +10,10 @@ case "$1" in
 		sudo chmod 666 /sys/module/i2c_bcm2708/parameters/combined
 		sudo echo -n 1 > /sys/module/i2c_bcm2708/parameters/combined
 		#démarrer le script MyDSPi
+		
+		
 		sudo /usr/local/bin/MyDSPi
+		sudo /usr/local/bin/PE_Configurator
     ;;
     stop)
         # Placez ici les commandes à exécuter uniquement à l'arrêt du 
