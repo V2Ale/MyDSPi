@@ -60,34 +60,20 @@ char *trim(char *str)
 }
 
 
-
-/* getSectionParameterValue return the value of a parameter in a target section
-* Input  : pPath file path of the ini file
-* Input  : section name
-* Input	 : parameter name
-* Output : value of parameter from section
-* Return : error code
-*/
-
-f_return getSectionParameterValue(char *pPath, char *section, char *parameter, char *value)
+char* ReadFile(char* pPath)
 {
 	int fileLen=0;
-	char buffer[FILENAME_MAX];
-	int validsection = 0;
-	int linetype = 0;											// 0 = commentaire | 1 = section | 2 = paramètre
-	char *token=NULL;
-	char valid_data_found=0;
-	f_return err;
-	char* current_string = malloc(255*sizeof(char));
-	
-// Chargement du fichier
 	FILE *fp;
+	char buffer[FILENAME_MAX];
+	char* file = malloc(10000 * sizeof(char));
+	
+	
 	fp = fopen(pPath,"r");
 	
 	if(fp == NULL)
 	{
 		perror("Error opening file");
-		return err;
+	return NULL;
 	}
 	else
 	{
@@ -98,109 +84,179 @@ f_return getSectionParameterValue(char *pPath, char *section, char *parameter, c
 		fclose(fp);
 	}
 
-	token = strtok(trim(buffer), "\n");
-	strncpy(current_string, token, strlen(token)	);
-// printf("\n|%s|->[%s] : lenght : %d",token,current_string,strlen(token));
+	strcat(buffer,"\nEND\n");
+	// file = malloc(strlen(buffer)*sizeof(char));
+	strcpy(file,buffer);
 	
-
-	while(token!=NULL)
-	{
+	return file;
 
 	
-	 current_string = malloc(strlen(token));
-	
-	// Remove comment in the lines
-		if((int)strchr(token,';') != 0)
-		{
-			 int pos = (int)strchr(token,';') - (int)token;
-			 strncpy(current_string,token,pos);
-			 // printf("\n %s->%d", trim(current_string),strlen(trim(current_string)));
-		}
+}
 
-		else
-		{
-			strncpy(current_string, token, strlen(token)	);
-		}
-/// Skip lines with errors (contains both [,],=)
-	
-	
-	// check if it's good section
 
-	if(strchr(current_string,'[')!=NULL && strchr(current_string,']') != NULL)
-		{
-
-			linetype = ini_section;	
-			char*	section_name 	= malloc(strlen(current_string) + 1); 
-			int 	word_lenght		= strchr(current_string,']') - strchr(current_string,'[') - 1 ; 
-			int 	word_start 		= (int)strchr(current_string,'[') + 1;
-			
-			strncpy(section_name,strchr(current_string,'[') + 1,word_lenght);					
-			//When parameter section is found
-			if(strcmp( trim(section_name),trim(section))==0)
-				validsection = 1;
-			else
-				validsection = 0;
-			
-		}
+char* tokenize(char* input, char* output[FILENAME_MAX])
+{
 	
-	// check if it's good parameter
 	
-	if(validsection == 1)
-		{
-			if(strchr(current_string,'=')!=NULL)
-			{
-			char*	param_name 			= 	malloc(strlen(current_string) + 1);
-			char*	param_value			=	malloc(strlen(current_string) + 1);
-			int 	param_lenght		=  	(current_string + strlen(current_string)) - strchr(current_string,'=');
-			int  	param_start 		= 	(int)strchr(current_string,'=') + 1;	
-			
-			strncpy(param_value,strchr(current_string,'=')+1,param_lenght);
-			strncpy(param_name,current_string,strchr(current_string,'=') - current_string);
-			// printf("\n > |%s| - |%s|",trim(param_name),trim(parameter));
-		
-	// return the value	
-			if(strcmp( trim(param_name),trim(parameter)	)==0)
-				{
-					/// retourner la valeur
-					valid_data_found = 1;
-					strcpy(value,param_value);
-					// printf("\nvalue %s->%s",param_name,value);
-					err = seterror(0,0,"OK");
-					return err;
-				}
-			}
-		}
+	char str[FILENAME_MAX];
 	
+	const char s[2] = "\n";
+	char *token;
+   
+   sprintf(str,"%s",input);
+   
+	int k=0;
+   /* get the first token */
+   token = strtok(str, s);
 
-	token = strtok(NULL, "\n");
-
-	current_string = NULL;
-
-	}
-	
-	if(validsection == 0)
-	{
-		err = seterror(1,-1,"Section not found");
-		return err;
-	}
-
-	if(valid_data_found == 0)
-	{
-		
-		err = seterror(2,-1,"parameter not found");
-		return err;
-	}
-	
+   /* walk through other tokens */
+   while( token != NULL ) 
+   {
+    
+	 output[k] = malloc(1000 * sizeof(char));
+	 sprintf(output[k],	"%s",	trim(token));
+    
+     token = strtok(NULL, s);
+	 k++;
+   }
 
 
 }
 
 
-float getSPVf(char *pPath, char *section, char *parameter)
+/* getSectionParameterValue return the value of a parameter in a target section
+* Input  : pFile file path of the ini file
+* Input  : section name
+* Input	 : parameter name
+* Output : value of parameter from section
+* Return : error code
+*/
+
+f_return getSectionParameterValue(char *pFile, char *section, char *parameter, char *value)
+{
+	int validsection = 0;
+	int linetype = 0;											// 0 = commentaire | 1 = section | 2 = paramètre
+	char valid_data_found=0;
+	f_return erro;
+	char* current_string = malloc(255*sizeof(char));
+
+// Load config file and tokenize
+	
+
+	char* ConfigLine[100] ;
+	tokenize(pFile,ConfigLine);
+	
+	
+	
+	int k=0;
+		
+	do
+	{
+		
+		int lenght = (int)strchr(ConfigLine[k],';') - (int)ConfigLine[k];
+		
+		if(lenght<0)
+		{
+			lenght=strlen(ConfigLine[k]);
+		}
+
+		char* ctemp=malloc(strlen(ConfigLine[k])*sizeof(char));
+		strncpy(ctemp,ConfigLine[k],lenght);		
+		strcpy(current_string,trim(ctemp));
+	
+
+// check if it's good section
+
+		if(strchr(current_string,'[')!=NULL && strchr(current_string,']') != NULL)
+			{
+
+				linetype = ini_section;	
+				char*	section_name 	= malloc(strlen(current_string) + 1); 
+				int 	word_lenght		= strchr(current_string,']') - strchr(current_string,'[') - 1 ; 
+				int 	word_start 		= (int)strchr(current_string,'[') + 1;
+				
+				strncpy(section_name,strchr(current_string,'[') + 1,word_lenght);	
+				
+//When parameter section is found
+				if(strcmp( trim(section_name),trim(section))==0)
+				{
+					validsection = 1;
+				}	
+				else
+				{
+					validsection = 0;
+				}
+						
+			}
+// check if it's good parameter
+	
+		if(validsection == 1)
+			{
+				
+				if(strchr(current_string,'=')!=NULL)
+				{
+				char*	param_name 			= 	malloc(strlen(current_string) + 1);
+				char*	param_value			=	malloc(strlen(current_string) + 1);
+				int 	param_lenght		=  	(current_string + strlen(current_string)) - strchr(current_string,'=');
+				int  	param_start 		= 	(int)strchr(current_string,'=') + 1;	
+				
+				strncpy(param_value,strchr(current_string,'=')+1,param_lenght);
+				strncpy(param_name,current_string,strchr(current_string,'=') - current_string);
+										
+		// return the value	
+				if(strcmp( trim(param_name),trim(parameter)	)==0)
+					{
+						
+						valid_data_found = 1;
+						strcpy(value,param_value);
+						
+						erro = seterror(0,0,"OK");
+						goto end;
+					}		
+				}
+
+			}
+		
+		k++;		
+		if(strcmp(ConfigLine[k],"END")==0)
+		{
+
+			if(validsection == 0)
+			{
+				
+				erro = seterror(1,-1,"Section not found");
+				strcpy(value,"");
+				goto end;
+			}
+			
+			if(valid_data_found == 0)
+			{
+				erro = seterror(2,-1,"parameter not found");
+				strcpy(value,"");
+				goto end;
+			}
+
+		}
+	
+	}while(ConfigLine[k]!=NULL);
+
+	
+end:
+
+	free(current_string);
+
+	return erro;
+
+
+}
+
+
+
+float getSPVf(char *pFile, char *section, char *parameter)
 {
 char* value = malloc(255*sizeof(char));
 
-	f_return result = getSectionParameterValue(pPath,section,parameter,value);
+	f_return result = getSectionParameterValue(pFile,section,parameter,value);
 
 		if(result.errorstate != -1)
 		{
@@ -213,11 +269,11 @@ char* value = malloc(255*sizeof(char));
 
 }
 
-int getSPVi(char *pPath, char *section, char *parameter)
+int getSPVi(char *pFile, char *section, char *parameter)
 {
 char* value = malloc(255*sizeof(char));
 
-	f_return result = getSectionParameterValue(pPath,section,parameter,value);
+	f_return result = getSectionParameterValue(pFile,section,parameter,value);
 
 		if(result.errorstate != -1)
 		{
@@ -226,11 +282,11 @@ char* value = malloc(255*sizeof(char));
 
 }
 
-char* getSPVc(char *pPath, char *section, char *parameter)
+char* getSPVc(char *pFile, char *section, char *parameter)
 {
-char* value = malloc(255*sizeof(char));
+	char* value = malloc(255*sizeof(char));
 
-	f_return result = getSectionParameterValue(pPath,section,parameter,value);
+	f_return result = getSectionParameterValue(pFile,section,parameter,value);
 	
 		if(result.errorstate != -1)
 		{

@@ -42,8 +42,7 @@ struct Safeload_Data
 	
 struct channel
 {
-	char* ID;
-	char* alias;
+
 	int mute;
 	float volume;
 	int phase;

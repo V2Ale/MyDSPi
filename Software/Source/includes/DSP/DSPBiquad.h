@@ -1,10 +1,6 @@
 #ifndef __DSPBIQUAD_H__
 #define __DSPBIQUAD_H__
 
-//variables
-
-
-//Prototypes
 
 void 	ADAU1701_ReadBiquad		(int DSPAddress,int register_address,struct Biquad* biquad);
 f_return	createcrossover			(char *pConfigFile);

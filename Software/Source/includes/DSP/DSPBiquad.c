@@ -24,8 +24,6 @@
 #include "../libini/libini.h"
 
 //DSP
-// #include "../Sigma/v120param.h"
-
 #include "../Sigma/v122param.h"
 
 //Config
@@ -91,7 +89,7 @@ f_return checkchannelconfig		(struct channel Ch)
 		err = seterror(3,-1,"Mute value not valid");
 
 	}
-	if (Ch.phase != 0 && Ch.phase != 1) 
+	if (Ch.phase != -1 && Ch.phase != 1) 
 	{
 		err = seterror(3,-1,"Phase value not valid");
 
@@ -442,25 +440,26 @@ f_return createfilters			(char *pConfigFile)
 	{
 // Load filter value from file		
 		
-		sprintf(filterName,"EQ%d",i);
+	sprintf(filterName,"EQ%d",i);
 		
 //Vérifier l'existence de la section
 		char* value = malloc(255*sizeof(char));
-		f_return result = getSectionParameterValue(config_file_path,filterName,"Type",value);
+		f_return result = getSectionParameterValue(pConfigFile,filterName,"Type",value);
 			
 		if(result.errorlevel != 1)
 		{
-
-			
+					
 			// récupération des valeurs du fichier de config
 			EQ[i].frequency 	= 	getSPVf(pConfigFile,filterName,"F");
 			EQ[i].boost 		= 	getSPVf(pConfigFile,filterName,"B");
 			EQ[i].gain 			= 	getSPVf(pConfigFile,filterName,"Gain");
 			EQ[i].type 			= 	getSPVc(pConfigFile,filterName,"Type");
 			
+			
+			
 				if(strcmp(trim(value),"LSF")==0 || strcmp(trim(value),"HSF")==0)
 				{
-					EQ[i].S 			= 	getSPVf(config_file_path,filterName,"S");
+					EQ[i].S 			= 	getSPVf(pConfigFile,filterName,"S");
 					// printf("\n%s<S>%f",filterName,EQ[i].S);
 				}
 				else
@@ -469,13 +468,13 @@ f_return createfilters			(char *pConfigFile)
 					// printf("\n%s<Q>%f",filterName,EQ[i].Q);
 				}
 		
-			
+
 			// Check filter value range	
 			err = checkfilterrange(EQ[i]);
 		
 				if( err.errorstate == -1)
 				{	
-					err = seterror(1,-1,"Filter range fails");
+					//err = seterror(1,-1,"Filter range fails");
 					return err;
 
 				}
@@ -492,7 +491,10 @@ f_return createfilters			(char *pConfigFile)
 					ADAU1701_SAFELOAD_Write_block(0x68,SLData);
 					j=j+5;
 				}
+				
 		}
+		
+		free(value);
 	}
 	
 }
@@ -510,7 +512,7 @@ f_return configure_DSP			(char *pConfigFile)
 	
 	f_return err;
 	input_type = getSPVc(pConfigFile,"config","audioinput");
-	// printf("\n\ninput: [%s]",input_type);
+	
 	if(strcmp(input_type,"analog")==0)
 	{
 			li_data[0]=0x00000000;
@@ -574,22 +576,22 @@ f_return configure_iochannels	(char *pConfigFile)
 	{
 		char *sectionName = malloc(8*sizeof(char));
 		sprintf(sectionName,"Input%d",i+1);
-		
+	
 		// Read input channel
-			iChannel[i].ID		 = 	getSPVc(pConfigFile,sectionName,"ID");
-			iChannel[i].alias	 =	getSPVc(pConfigFile,sectionName,"alias");
+
 			iChannel[i].mute	 = 	getSPVi(pConfigFile,sectionName,"mute");
 			iChannel[i].volume	 =	getSPVf(pConfigFile,sectionName,"volume");
-				
+			
+		
+		
 		// No phase and delay block on input. Set to the default values for compatibility
-			iChannel[i].phase	 = 0;
+			iChannel[i].phase	 = 1;
 			iChannel[i].delay	 = 1;
 		
 		//Configure output channel for Low/High
 			
 			sprintf(sectionName,"Output%d",i+1);
-			oChannel[i].ID		 = 	getSPVc(pConfigFile,sectionName,"ID");
-			oChannel[i].alias	 = 	getSPVc(pConfigFile,sectionName,"alias");
+
 			oChannel[i].mute	 = 	getSPVi(pConfigFile,sectionName,"mute");
 			oChannel[i].volume	 = 	getSPVf(pConfigFile,sectionName,"volume");
 			oChannel[i].phase	 = 	getSPVi(pConfigFile,sectionName,"phase");
@@ -607,6 +609,7 @@ f_return configure_iochannels	(char *pConfigFile)
 			{
 			return erro;
 			}
+
 	}
 
 	for(i=0;i<2;i++)
@@ -654,7 +657,21 @@ f_return configure_iochannels	(char *pConfigFile)
 					
 				}
 		//Write Phase
-			temp = oChannel[i].phase*pow(2,23);
+		//Select a default phase if the value in the config file is wrong (ex: 0)
+		
+				if(oChannel[i].phase != -1 && oChannel[i].phase != 1)
+				{
+					oChannel[i].phase = 1;
+				}
+				if(oChannel[i].phase == 1)
+				{
+					temp = oChannel[i].phase*pow(2,23);
+				}
+				else
+				{
+					temp = 0xFF800000;
+				}
+			
 			Data_Splitter_Table(temp, pData);
 				if(i==0)
 				{
@@ -693,7 +710,7 @@ f_return createcrossover			(char *pConfigFile)
 	f_return err;
 	
 	char* value = malloc(255*sizeof(char));
-	err = getSectionParameterValue(config_file_path,"crossover","FLow",value);
+	err = getSectionParameterValue(pConfigFile,"crossover","FLow",value);
 	
 	if(err.errorstate == 0)
 	{
@@ -705,7 +722,7 @@ f_return createcrossover			(char *pConfigFile)
 		return err;
 	}
 	
-	err = getSectionParameterValue(config_file_path,"crossover","FHigh",value);
+	err = getSectionParameterValue(pConfigFile,"crossover","FHigh",value);
 	
 
 	  
@@ -733,9 +750,6 @@ f_return createcrossover			(char *pConfigFile)
 	}
 	else
 	{
-		
-	
-	
 
 // Create LOW & High Pass biquad		
 		
