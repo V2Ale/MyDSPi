@@ -14,7 +14,9 @@ amplifiers and DAC, which can handle up to for 4 channels of
 amplification. In addition, the board is used for power supply the
 entire stack. <br>
 <br style="color: red;">
-<span style="color: red;">[Block diagram]</span><br>
+<span style="color: red;"></span><img
+ alt="Block diagram Amplifier"
+ src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/BlockDiagramMyAmpi.PNG"><br>
 <br>
 <h3>DAC</h3>
 <br>
