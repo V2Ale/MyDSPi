@@ -11,7 +11,7 @@
 <div style="margin-left: 40px;">MyDSPi is an easy to
 implement solution for audio processing and amplification with a
 Raspberry Pi (2 and 3) audio output. <br>
-It's intended to be a cost effective solution to make electronic,
+It's intended to be a cost effective solution to make
 active&nbsp;speakers.<br>
 Electronic circuit is based on Analog Device ADAU1701 DSP and Texas
 Instrument TPA3118 amplifier.<br>
