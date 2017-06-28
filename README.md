@@ -15,9 +15,7 @@ It's intended to be a cost effective solution to make electronic,
 active&nbsp;speakers.<br>
 Electronic circuit is based on Analog Device ADAU1701 DSP and Texas
 Instrument TPA3118 amplifier.<br>
-<img
- alt="Block diagram Amplifier"
- src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/ProjectStackOverviewDrawing.PNG"><br>
+
 </div>
 <br style="font-weight: bold;">
 <h3>Hardware description</h3>
@@ -26,6 +24,9 @@ Instrument TPA3118 amplifier.<br>
 <div style="margin-left: 40px;">MyDSPi is designed to be
 compact and mounted over a Raspberry Pi 2 board. Hardware is split over
 2 printed circuit boards stack one above the other.<br>
+<img
+ alt="Block diagram Amplifier"
+ src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/ProjectStackOverviewDrawing.PNG"><br>
 <br>
 The first board is dedicated to DSP processing and Digital to Analog
 signal convertion from Raspberry Pi audio output.&nbsp;Audio must
