@@ -11,13 +11,16 @@ case "$1" in
 		sudo echo -n 1 > /sys/module/i2c_bcm2708/parameters/combined
 		#démarrer le script MyDSPi
 		
-		
+		sudo /root/I2C_Check/I2Ccheck.sh
+		sudo /usr/local/bin/PE_Configurator -mute
+		sudo /usr/local/bin/asrc_configurator -init /etc/default/asrc.config.default
 		sudo /usr/local/bin/MyDSPi
-		sudo /usr/local/bin/PE_Configurator
+		sudo /usr/local/bin/PE_Configurator -init
     ;;
     stop)
         # Placez ici les commandes à exécuter uniquement à l'arrêt du 
         # script
+		sudo /usr/local/bin/PE_Configurator -mute
         
     ;;
     *)

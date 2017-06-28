@@ -49,3 +49,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+Software/Install/config/asrc.config.default
+Software/Install/config/desktop.ini
