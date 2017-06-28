@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>DSP PCB</h1>
-<h3>Overview</h3><br>
+<h3>Overview</h3>
 
 The DSP used for this project is Analog Device's ADAU1701. It has many
 input and output pins, either analog and digital. In the project scope,
@@ -22,7 +22,7 @@ microcontroller (Raspberry Pi) using I2C interface.
  alt="Block diagram Amplifier"
  src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/BlockDiagramMyDSPi.PNG"><br>
 
-<h3>Input channels</h3><br>
+<h3>Input channels</h3>
 The DSP can process analog or digital (I2S) input, but only analog
 input can be used. Despite the presence of analog input circuit
 components routed in the 40 pin connecor, the project do not rely on
@@ -36,8 +36,8 @@ useless painful struggle with the kernel. <br>
 Moreover, this component is readily cheap and available on the market
 (PCM5100 being pin to pin compatible). Extra functionality of this DAC
 such as filter type or soft mute are not used and not left to end user.<br>
-<h3>Output channels</h3><br>
-&nbsp;<br>
+
+<h3>Output channels</h3>
 The DSP can output analog or digital (I2S) signals. Both of them are
 available on this board but the amplifiers board is expecting I2S
 signal before amplification stage. If you whish to use the I2S output
@@ -45,14 +45,18 @@ with other amplifier board, please mind that it does not output the SCK
 as well. This choice has been made because the DAC do not need it to
 operate normally and it avoid special care in the routing for this high
 speed clock. <br>
-<br><h3>I2S and clocks</h3><br>
+
+<br><h3>I2S and clocks</h3>
 Input and output I2S signals are working at fixed LRCK of 48kHz. The
 DSP is driven by a 24.576MHz clock. I2S LRCK and BCK at input and
 output of the DSP are connected together as required in the datasheet
 of the component.<br>
 It's not possible to run the DSP at other sampling frequency or with
-different outside clock without changing the routing of the board. <br>
-<br><h3>Connectors</h3><br>
+different outside clock without changing the routing of the board. 
+<br>
+<br>
+<h3>Connectors</h3>
+
 The first 40 pin connector is fully compliant with the Raspberry Pi 2
 and later connector layout. The other one, is used to provide input
 &amp; output channels, power supply, I2C and amplifier mute to the
@@ -272,7 +276,8 @@ other stages.<br>
   </tbody>
 </table>
 
-<br><h3>Power Supply</h3><br>
+<br>
+<h3>Power Supply</h3>
 
 The PCB receives its power supply from the amplifier PCB which has the
 input DC jack socket and DC converters.<br>
