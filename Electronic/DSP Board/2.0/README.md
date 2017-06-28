@@ -17,9 +17,14 @@ It has two 40 pins connectors. One to connect this board to the
 raspberry pi, the other to connect the board to other stages (like
 amplifier &amp; power supply). The DSP clock is supplied by a
 24.576 Mhz Quartz and the programming of the DSP is done via external
-microcontroller (Raspberry Pi) using I2C interface.<br>
+microcontroller (Raspberry Pi) using I2C interface.
+<br><img
+ alt="Block diagram Amplifier"
+ src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/BlockDiagramMyDSPi.PNG"><br>
 <br>
-Input channels<br>
+<br>
+
+<br>Input channels<br>
 The DSP can process analog or digital (I2S) input, but only analog
 input can be used. Despite the presence of analog input circuit
 components routed in the 40 pin connecor, the project do not rely on
