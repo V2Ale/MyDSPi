@@ -47,11 +47,10 @@ voltage from 12 to 24 volts to feed all system power supply (including
 the Raspberry Pi).<br>
 <br>
 For more details about each board, please refer to :<br>
-<span style="color: red;"><a
+<span style="color: red;">+<a
  href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/DSP%20Board/2.0">DSP Board page</a></span><br>
-<span style="color: red;"><a
+<span style="color: red;">+<a
  href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/Amplification%20Board">Amplifier board page</a></span> 
-amplifier pcb page<br>
 </div>
 </div>
 <br>
