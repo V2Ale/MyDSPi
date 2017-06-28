@@ -11,7 +11,8 @@
 The DSP used for this project is Analog Device's ADAU1701. It has many
 input and output pins, either analog and digital. In the project scope,
 this board in 2.0 version is limited to the use of 2 input to 8 digital
-+ 4 analog outputs.<br>
+and 4 analog outputs.
+<br>
 It has two 40 pins connectors. One to connect this board to the
 raspberry pi, the other to connect the board to other stages (like
 amplifier &amp; power supply). The DSP clock is supplied by a
