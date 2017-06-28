@@ -17,7 +17,7 @@ Electronic circuit is based on Analog Device ADAU1701 DSP and Texas
 Instrument TPA3118 amplifier.<br>
 <img
  alt="Block diagram Amplifier"
- src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/BlockDiagramMyDSPi.PNG"><br>
+ src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/ProjectStackOverviewDrawing.PNG"><br>
 </div>
 <br style="font-weight: bold;">
 <h3>Hardware description</h3>
