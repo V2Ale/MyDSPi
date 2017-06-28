@@ -48,10 +48,9 @@ the Raspberry Pi).<br>
 <br>
 For more details about each board, please refer to :<br>
 <span style="color: red;"><a
- href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/DSP%20Board/2.0">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c</a>)</span> - link to the
-DSP pcb page<br>
+ href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/DSP%20Board/2.0">DSP Board page</a></span><br>
 <span style="color: red;"><a
- href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/Amplification%20Board">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c</a>)</span> - link to the
+ href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/Amplification%20Board">Amplifier board page</a>)</span> 
 amplifier pcb page<br>
 </div>
 </div>
