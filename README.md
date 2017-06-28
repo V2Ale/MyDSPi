@@ -23,7 +23,7 @@ Instrument TPA3118 amplifier.<br>
 <div style="margin-left: 40px;"><br>
 <div style="margin-left: 40px;">MyDSPi is designed to be
 compact and mounted over a Raspberry Pi 2 board. Hardware is split over
-2 printed circuit boards stack one above the other.<br>
+2 printed circuit boards stack one above the other.<br><br>
 <img
  alt="Block diagram Amplifier"
  src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/ProjectStackOverviewDrawing.PNG"><br>
