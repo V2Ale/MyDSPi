@@ -15,7 +15,9 @@ It's intended to be a cost effective solution to make electronic,
 active&nbsp;speakers.<br>
 Electronic circuit is based on Analog Device ADAU1701 DSP and Texas
 Instrument TPA3118 amplifier.<br>
-<br>
+<img
+ alt="Block diagram Amplifier"
+ src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/BlockDiagramMyDSPi.PNG"><br>
 </div>
 <br style="font-weight: bold;">
 <h3>Hardware description</h3>
