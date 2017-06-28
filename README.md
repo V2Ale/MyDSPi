@@ -11,11 +11,11 @@
 <div style="margin-left: 40px;">MyDSPi is an easy to
 implement solution for audio processing and amplification with a
 Raspberry Pi (2 and 3) audio output. <br>
-It's intended to be a cost effective solution to make electronic,
+It's intended to be a cost effective solution to make
 active&nbsp;speakers.<br>
 Electronic circuit is based on Analog Device ADAU1701 DSP and Texas
 Instrument TPA3118 amplifier.<br>
-<br>
+
 </div>
 <br style="font-weight: bold;">
 <h3>Hardware description</h3>
@@ -23,7 +23,10 @@ Instrument TPA3118 amplifier.<br>
 <div style="margin-left: 40px;"><br>
 <div style="margin-left: 40px;">MyDSPi is designed to be
 compact and mounted over a Raspberry Pi 2 board. Hardware is split over
-2 printed circuit boards stack one above the other.<br>
+2 printed circuit boards stack one above the other.<br><br>
+<img
+ alt="Block diagram Amplifier"
+ src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/ProjectStackOverviewDrawing.PNG"><br>
 <br>
 The first board is dedicated to DSP processing and Digital to Analog
 signal convertion from Raspberry Pi audio output.&nbsp;Audio must
@@ -44,10 +47,10 @@ voltage from 12 to 24 volts to feed all system power supply (including
 the Raspberry Pi).<br>
 <br>
 For more details about each board, please refer to :<br>
-<span style="color: red;">XXX</span> - link to the
-DSP pcb page<br>
-<span style="color: red;">YYY</span> - link to the
-amplifier pcb page<br>
+<span style="color: red;">+<a
+ href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/DSP%20Board/2.0">DSP Board page</a></span><br>
+<span style="color: red;">+<a
+ href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/Amplification%20Board">Amplifier board page</a></span> 
 </div>
 </div>
 <br>

@@ -5,62 +5,71 @@
  http-equiv="content-type">
 </head>
 <body>
-<h1>DSP PCB</h1>
+<h1>Amplifier and Power Supply Board</h1>
 <h3>Overview</h3>
-
-The DSP used for this project is Analog Device's ADAU1701. It has many
-input and output pins, either analog and digital. In the project scope,
-this board in 2.0 version is limited to the use of 2 input to 8 digital
-and 4 analog outputs.
 <br>
-It has two 40 pins connectors. One to connect this board to the
-raspberry pi, the other to connect the board to other stages (like
-amplifier &amp; power supply). The DSP clock is supplied by a
-24.576 Mhz Quartz and the programming of the DSP is done via external
-microcontroller (Raspberry Pi) using I2C interface.
-<br><img
+Amplifier and Power Supply board is the second PCB of this project that
+can be stack with the DSP board. It's designed to host 2 set of
+amplifiers and DAC, which can handle up to for 4 channels of
+amplification. In addition, the board is used for power supply the
+entire stack. <br>
+<br style="color: red;">
+<span style="color: red;"></span><img
  alt="Block diagram Amplifier"
- src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/BlockDiagramMyDSPi.PNG"><br>
-
-<h3>Input channels</h3>
-The DSP can process analog or digital (I2S) input, but only analog
-input can be used. Despite the presence of analog input circuit
-components routed in the 40 pin connecor, the project do not rely on
-it. <br>
-To use the board with the Raspberry Pi, the 3 wires of I2S are
-converted by a DAC (PCM5102a) and provided to DSP by the analog input. <br>
-The benefit of using PCM5102 DAC is that it does not requires the I2S
-system clock (SCK) to work. It's especially useful because the
-raspberry pi does not provide the SCK out of the box and it avoids
-useless painful struggle with the kernel. <br>
-Moreover, this component is readily cheap and available on the market
-(PCM5100 being pin to pin compatible). Extra functionality of this DAC
-such as filter type or soft mute are not used and not left to end user.<br>
-
-<h3>Output channels</h3>
-The DSP can output analog or digital (I2S) signals. Both of them are
-available on this board but the amplifiers board is expecting I2S
-signal before amplification stage. If you whish to use the I2S output
-with other amplifier board, please mind that it does not output the SCK
-as well. This choice has been made because the DAC do not need it to
-operate normally and it avoid special care in the routing for this high
-speed clock. <br>
-
-<br><h3>I2S and clocks</h3>
-Input and output I2S signals are working at fixed LRCK of 48kHz. The
-DSP is driven by a 24.576MHz clock. I2S LRCK and BCK at input and
-output of the DSP are connected together as required in the datasheet
-of the component.<br>
-It's not possible to run the DSP at other sampling frequency or with
-different outside clock without changing the routing of the board. 
+ src="https://github.com/V2Ale/MyDSPi/blob/master/Ressources/BlockDiagramMyAmpi.PNG"><br>
+<br>
+<h3>DAC</h3>
+<br>
+Digital to Analog conveters used for this board are PCM5102a (and
+similar such as PCM5100). The
+benefit of using PCM5102 DAC is that it does not requires the I2S
+high frequency system clock (SCK) to work making routing between boards
+much easier. <br>
+Also, this component provides additionnal controls like demphasis, FIR
+or IIR filter of output, format (I2S or Left justified) and soft mute.
+Those controls are driven by a port expander with I2C interface that
+allows end user to use this amplifier board for other designs. More
+details on those controls can be found in the component datasheet. <br>
+Last, this component
+is readily cheap and available on the market (PCM5100 being pin to pin
+compatible).<br>
 <br>
 <br>
-<h3>Connectors</h3>
-
-The first 40 pin connector is fully compliant with the Raspberry Pi 2
-and later connector layout. The other one, is used to provide input
-&amp; output channels, power supply, I2C and amplifier mute to the
-other stages.<br>
+<h3>Amplifier</h3>
+&nbsp;<br>
+The Texas Instrument TPA3118 amplifiers are stereo class D amplifiers
+that can drive 2x30W into 8 Ohms load (with a 24V supply). It can
+operate with a wide single operating voltage from 4.5V to 26V keeping
+the power supply design simple. <br>
+As audio input, the amplifier expect single ended audio which are
+provided by DAC. All external controls (like gain) of the amplifier are
+set constant except the amplifier mute which can be controlled thanks
+to the port expander.<br>
+Last, the amplifier integrates bad operating conditions (like
+overtemperature, output short circuit) which are sent back to the
+Faultz pins. Those pins are connected to the port expander and can be
+monitored as well.<br>
+<br>
+<h3>Port Expander</h3>
+<br>
+As explain in previous parts, the port expander is in charge of
+monitoring amplifier state and set DAC and amplifiers controls. The
+part used for this task is very common MCP23008 from Microchip.<br>
+<br>
+<h3>Power Supply </h3>
+<br>
+The board do not have any power supply transformer and switch mode
+power supply block design is outside the scope of this project. As a
+result, a maximum of 26V voltage is expected at the DC jack terminal
+connector. This voltage is directly used to feed the amplifiers and is
+also converted down to a 5V supply voltage for all other boards
+(including Raspberry Pi supply). &nbsp; <br>
+<br>
+<h3>Connectors </h3>
+<br>
+The&nbsp; 40 pin connector is used to connected to the DSP board
+and get DSP output channels,&nbsp; I2C and amplifier mute command.
+It also provides the supply rail voltage for the entire project.<br>
 <br>
 <span style="color: red;">[IMAGE DU SCHEMA DU CONNETEUR]</span><br>
 <br>
@@ -275,15 +284,7 @@ other stages.<br>
     </tr>
   </tbody>
 </table>
-
 <br>
-<h3>Power Supply</h3>
-
-The PCB receives its power supply from the amplifier PCB which has the
-input DC jack socket and DC converters.<br>
-The
-5V supply at input&nbsp; is shared with the Raspberry Pi. From this
-5V supply,
-a 3.3V regulator on the board feed all components of this board.
+<br>
 </body>
 </html>
