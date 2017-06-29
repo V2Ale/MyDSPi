@@ -47,10 +47,11 @@ voltage from 12 to 24 volts to feed all system power supply (including
 the Raspberry Pi).<br>
 <br>
 For more details about each board, please refer to :<br>
-<span style="color: red;">+<a
- href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/DSP%20Board/2.0">DSP Board page</a></span><br>
-<span style="color: red;">+<a
- href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/Amplification%20Board">Amplifier board page</a></span> 
+<ul>
+<li><a href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/DSP%20Board/2.0">DSP Board page</a></li>
+<br>
+<li><a href="https://github.com/V2Ale/MyDSPi/tree/master/Electronic/Amplification%20Board">Amplifier board page</a></li>
+</ul>
 </div>
 </div>
 <br>
@@ -84,12 +85,19 @@ Installation of &nbsp;MyDSPi is tested and developped for Linux
 Raspbian Jessie distribution.<br>
 <br>
 The following step describes only the installation major steps. <br>
-- Setup I2C (<a
- href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c</a>)<br>
-- Setup I2S soundcard (following &nbsp;<a
- href="https://www.hifiberry.com/build/documentation/hifiberry-software-configuration/">https://www.hifiberry.com/build/documentation/hifiberry-software-configuration/</a>)<br>
-- Run installation script (see<span style="color: red;">
-https://github.com/V2Ale/MyDSPi/tree/master/Software/Install</span>)<br>
+
+<ul>
+<li>Setup I2C (<a href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c">
+https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c</a>)<br>
+</li>
+<li>Setup I2S soundcard (following &nbsp;<a href="https://www.hifiberry.com/build/documentation/hifiberry-software-configuration/">https://www.hifiberry.com/build/documentation/hifiberry-software-configuration/</a>)<br>
+</li>
+<li>
+ Run installation script (see https://github.com/V2Ale/MyDSPi/tree/master/Software/Install)<br>
+ </li>
+ </ul>
+ 
+ 
 <h3>Configuration</h3>
 To edit the configuration file, use the command :<br>
 <pre>&nbsp;sudo nano /etc/default/MyDSPi.conf</pre>
