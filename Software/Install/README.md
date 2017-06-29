@@ -18,6 +18,10 @@ This will install the relevant executables, configuration file and setup the ser
 ### MyDSPi
 
 MyDSPi is the software that manages the DSP and amplifier based on the configuration file
+
+
+### PE_Configurator
+
 PE_Configurator is the software that manages the port expander of the amplifier board. It can be launch with the '-init' command for normal operation and with '-mute' command to mute the amplifier :
 $ PE_Configurator -init
 $ PE_Configurator -mute
