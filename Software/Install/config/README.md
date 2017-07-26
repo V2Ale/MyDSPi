@@ -98,6 +98,5 @@ Control the S parameter of LSF and HSF filters. It can take any value between 0.
 	Defines the Low pass filter corner frequency. It can range between 20 and 20000 and must be lower than the FHigh value
 
 - *FHigh*
-
-Defines the High pass filter corner frequency. It can range between 20 and 20000 and must be greater than the FLow value
+	Defines the High pass filter corner frequency. It can range between 20 and 20000 and must be greater than the FLow value
 
