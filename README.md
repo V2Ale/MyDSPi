@@ -104,7 +104,9 @@ For more details about configuration file rules, please refer to <span
  style="color: red;">https://github.com/V2Ale/MyDSPi/tree/master/Software/Install/config</span><br>
 <br>
 <h3>Roadmap</h3>
-Support 2 input / 2.1 output<br>
+Support 5.1 configuration<br>
+Support 7.1 configuration<br>
+Support quadriphonic configuration<br>
 &nbsp;<br>
 <h3>Disclaimer</h3>
 I'm not a profesinnal developper, which might explain some ugly
