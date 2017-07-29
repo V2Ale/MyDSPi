@@ -37,66 +37,57 @@ The available sections are :
 ----------
 
 
-Config section
+**Config section**
 
-The input section is used to configure the input type of the DSP. It has one parameter :
+The input section is used to configure the input type of the DSP. It has one parameter : *audioinput*
 
-**audioinput**
 It can take the values :
-
-- *digital*
-to set DSP input I2S signal
-- *analog* 
-to set DSP input as analog
-- *tone* 
-This  force the input to be a twin sine tone signal (500 Hz and 5000 Hz)
+| value      | Description  |
+| -------  | --- |
+| *digital* | set DSP input to I2S signal|
+| *analog* |  set DSP input to analog|
+| *tone* |  This  force the input to be a twin sine tone signal (500 Hz and 5000 Hz)|
 
 **Input sections**
 There is one input section per input channel with 2 parameters in each section.
 
-- *mute*
-            Mute when it's value is 1, must be 0 otherwise
-- *volume*
-            Control the input volume of the channel. It can take any value between -80 and 0
+| Parameter     | Value | Description  |
+| ------- | ---- | --- |
+| *mute* | 0 or 1|  muted when it's value is 1, must be 0 otherwise|
+| *volume* | -80.0 to 0.0|  control the input volume of the channel|
 
 **Output sections**
 There is one output section per output channel with 4 parameters in each section.
+      
 
-- *mute*
-            Mute when it's value is 1, must be 0 otherwise
-- *volume*
-            Control the input volume of the channel. It can take any value between -80 and 0 and 0.0
-- *delay*
-           Control the delay in samples of this channel. It can take any value between 1 and 412
-- *phase*
-            Control the output channel polarity. It takes the value 1 to reverse polarity, 0 otherwise
+| Parameter     | Value | Description  |
+| ------- | ---- | --- |
+| *mute* | 0 or 1|  muted when it's value is 1, must be 0 otherwise|
+| *volume* | -80.0 to 0.0|  control the input volume of the channel|
+| *delay* | 1 to 412|  control the delay in samples of this channel |
+| *phase*| 0 or 1|  control the output channel polarity. 1 to reverse polarity, 0 otherwise|
 
 **EQ sections**
 There are 14 EQ filters avaialble which can be configured independently. 
 
- - *type*
-           Defines the type of EQ. It can take the value
-*	HSF for high shelf filter
-*	LSF for low shelf filter
-*	HPF for high pass filter (1st order Bessel)
-*	LPF for Low pass filter (1st order Bessel)
-*	peak for peak filter (parametric)
-   
- - *F*
-Set the corner frequency of the filter. It can range between 20 to 20000
- - *B*
-Control boost factor of  peak, LSF and HSF filters. It can take any value between -80.0 to 20.0
- - *Q*
-Control Q-factor of  peak type EQ. It can take any value between 0.1 to 10.0
- - *B*
-Control the S parameter of LSF and HSF filters. It can take any value between 0.0 and 3.0
+HSF for high shelf filter
+LSF for low shelf filter
+HPF for high pass filter (1st order Bessel)
+LPF for Low pass filter (1st order Bessel)
+peak for peak filter (parametric)
+
+| Parameter     | Value | Description  |
+| ------- | ---- | --- |
+| *type* | HSF or LSF or HPF or LPF or peak| Defines the type of EQ |
+| *F* | 20 to 20000| Set the corner frequency of the filter|
+| *B* | -80.0 to 20.0|  Control boost factor of  peak, LSF and HSF filters.  |
+| *Q* | 0.1 to 10.0|  Control Q-factor of  peak type EQ  |
+| *B*| 0.0 to 3.0|  Control the S parameter of LSF and HSF filters.
 
 **Crossover section**
        There is one crossover for both output channels made of 2nd order butterworth low-pass and high-pass filter.   
        
-- *FLow*
-	Defines the Low pass filter corner frequency. It can range between 20 and 20000 and must be lower than the FHigh value
-
-- *FHigh*
-	Defines the High pass filter corner frequency. It can range between 20 and 20000 and must be greater than the FLow value
-
+| Parameter     | Value | Description  |
+| ------- | ---- | --- |
+| *FLow* | between 20 and 20000 |  Defines the Low pass filter corner frequency. It must be lower than the FHigh value    |
+| *FHigh*    | between 20 and 20000   |  Defines the High pass filter corner frequency. It must be greater than the FLow value
