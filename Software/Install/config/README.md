@@ -43,11 +43,11 @@ The input section is used to configure the input type of the DSP. It has one par
 
 It can take the following values
 
-| Value     |  | Description  |
+| Parameter | Value | Description  |
 | ------- | ---- | --- |
-| *digital* |  |  set DSP input to I2S signal|
-| *analog* |  | set DSP input to analog|
-| *tone* |  | This  force the input to be a twin sine tone signal (500 Hz and 5000 Hz)|
+| audioinput | *digital* |  set DSP input to I2S signal|
+| audioinput | *analog* | set DSP input to analog|
+| audioinput | *tone* | This  force the input to be a twin sine tone signal (500 Hz and 5000 Hz)|
 
  
 
