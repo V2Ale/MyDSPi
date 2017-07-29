@@ -100,52 +100,73 @@ peak for peak filter (parametric)
 **Config file Example**
 
 [config]
+
 audioinput=digital									
 
-[Input1]										
-mute=1												
+[Input1]
+
+mute=1
+
 volume=-25										
 
 [Input2]										
+
 mute=0												
+
 volume=-25											
 
 [Output2]											
+
 phase=-1
+
 mute=1												
+
 delay=1												
+
 volume=0											
 
 [Output1]											
+
 phase=1
+
 mute=1												
+
 delay=1												
+
 volume=-6											
 
 [EQ1]												
+
 F=125												
+
 B=-2.8												
+
 Q=1.41												
+
 Type=peak											
 
 [EQ2]
+
 F=5000												
+
 B=-2												
+
 Q=4													
+
 Type=peak	
 
 [EQ3]
-F=6000
-B=-2
-Q=1.41
-Type=peak	
 
-[EQ4]
 F=2200
+
 B=-2
+
 S=2
+
 Type=HSF
 
 [crossover]											
+
 FLow = 2800										
+
 FHigh = 3000
