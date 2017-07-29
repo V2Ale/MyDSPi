@@ -41,12 +41,15 @@ The available sections are :
 
 The input section is used to configure the input type of the DSP. It has one parameter : *audioinput*
 
-It can take the values :
-| value      | Description  |
-| -------  | --- |
-| *digital* | set DSP input to I2S signal|
-| *analog* |  set DSP input to analog|
-| *tone* |  This  force the input to be a twin sine tone signal (500 Hz and 5000 Hz)|
+It can take the following values
+
+| Value     |  | Description  |
+| ------- | ---- | --- |
+| *digital* |  |  set DSP input to I2S signal|
+| *analog* |  | set DSP input to analog|
+| *tone* |  | This  force the input to be a twin sine tone signal (500 Hz and 5000 Hz)|
+
+ 
 
 **Input sections**
 There is one input section per input channel with 2 parameters in each section.
@@ -91,3 +94,58 @@ peak for peak filter (parametric)
 | ------- | ---- | --- |
 | *FLow* | between 20 and 20000 |  Defines the Low pass filter corner frequency. It must be lower than the FHigh value    |
 | *FHigh*    | between 20 and 20000   |  Defines the High pass filter corner frequency. It must be greater than the FLow value
+
+
+----------
+**Config file Example**
+
+[config]
+audioinput=digital									
+
+[Input1]										
+mute=1												
+volume=-25										
+
+[Input2]										
+mute=0												
+volume=-25											
+
+[Output2]											
+phase=-1
+mute=1												
+delay=1												
+volume=0											
+
+[Output1]											
+phase=1
+mute=1												
+delay=1												
+volume=-6											
+
+[EQ1]												
+F=125												
+B=-2.8												
+Q=1.41												
+Type=peak											
+
+[EQ2]
+F=5000												
+B=-2												
+Q=4													
+Type=peak	
+
+[EQ3]
+F=6000
+B=-2
+Q=1.41
+Type=peak	
+
+[EQ4]
+F=2200
+B=-2
+S=2
+Type=HSF
+
+[crossover]											
+FLow = 2800										
+FHigh = 3000
