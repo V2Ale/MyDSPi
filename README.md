@@ -110,11 +110,6 @@ Support 5.1 configuration<br>
 Support 7.1 configuration<br>
 Support quadriphonic configuration<br>
 &nbsp;<br>
-<h3>Disclaimer</h3>
-I'm not a profesinnal developper, which might explain some ugly
-workaround in my code. My programming skills and time are very limited.
-Consequently, I can't afford to do a lot of support. I really whish
-advanced and enthusiast developpers could join and improve the
-project.&nbsp;
+
 </body>
 </html>
